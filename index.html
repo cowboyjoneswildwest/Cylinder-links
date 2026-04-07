@@ -4,8 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cylinder</title>
-  <meta name="description" content="Cylinder's links and projects" />
+  <meta name="description" content="Official links for Cylinder" />
   <style>
+    :root {
+      --bg: #0f1115;
+      --bg-soft: #151922;
+      --panel: rgba(255, 255, 255, 0.035);
+      --panel-hover: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --text: #f3f4f6;
+      --muted: #a1a1aa;
+      --muted-2: #7b8190;
+      --accent: #c7d2fe;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+      --radius: 22px;
+    }
 
     * {
       box-sizing: border-box;
@@ -15,277 +29,228 @@
       margin: 0;
       padding: 0;
       min-height: 100%;
-      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.02), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    body {
+      padding: 32px 16px 48px;
     }
 
-    .wrap {
-      width: min(1100px, calc(100% - 32px));
+    .container {
+      width: min(860px, 100%);
       margin: 0 auto;
-      padding: 48px 0 64px;
     }
 
     .hero {
-      text-align: center;
-      padding: 48px 20px 32px;
+      padding: 28px 8px 24px;
     }
 
-    .badge {
+    .eyebrow {
       display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--muted);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: var(--shadow);
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin: 18px 0 10px;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      line-height: 0.95;
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1;
       letter-spacing: -0.04em;
-      font-weight: 800;
-      -webkit-background-clip: text;
-      background-clip: text;
+      font-weight: 700;
+      color: #fcfcfd;
     }
 
     .subtitle {
-      max-width: 720px;
-      margin: 0 auto;
-      font-size: clamp(1rem, 2vw, 1.15rem);
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
       line-height: 1.7;
+      max-width: 540px;
     }
 
     .panel {
-      margin-top: 36px;
-      border: 1px solid var(--card-border);
+      margin-top: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 28px;
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      filter: blur(30px);
-      opacity: 0.5;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .panel > * {
-      position: relative;
-      z-index: 1;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
 
     .section-title {
-      font-size: 1.1rem;
-      margin: 6px 0 18px;
+      margin: 0 0 18px;
+      font-size: 0.98rem;
+      color: #e4e4e7;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      text-decoration: none;
+      color: inherit;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      min-height: 108px;
+    }
+
+    .card:hover {
+      background: var(--panel-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      flex: 0 0 42px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f4f4f5;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 22px;
-      padding: 18px;
-      min-height: 120px;
-      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-    }
-
-    .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
+    .content h3 {
+      margin: 1px 0 4px;
       font-size: 1rem;
-      margin-bottom: 14px;
-      color: white;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 8px 24px rgba(0,0,0,0.25);
+      font-weight: 600;
+      color: #fafafa;
     }
 
-
-    .card h3 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .card p {
+    .content p {
       margin: 0;
-      font-size: 0.95rem;
       color: var(--muted);
-      line-height: 1.5;
+      font-size: 0.93rem;
+      line-height: 1.55;
     }
 
     .footer {
-      text-align: center;
-      margin-top: 28px;
-      color: #a5b4d4;
+      margin-top: 18px;
+      padding: 6px 4px 0;
+      color: var(--muted-2);
       font-size: 0.92rem;
     }
 
-    .footer a {
-      color: #d8b4fe;
-      text-decoration: none;
-    }
-
-    .glow {
-      position: fixed;
-      width: 360px;
-      height: 360px;
-      border-radius: 999px;
-      filter: blur(80px);
-      opacity: 0.18;
-      pointer-events: none;
-      z-index: 0;
-      animation: drift 14s ease-in-out infinite alternate;
-    }
-
-    .glow.one {
-      background: #7c3aed;
-      top: 5%;
-      left: -80px;
-    }
-
-    .glow.two {
-      background: #06b6d4;
-      bottom: 10%;
-      right: -100px;
-      animation-delay: 2s;
-    }
-
-    @keyframes drift {
-      from { transform: translateY(0) translateX(0) scale(1); }
-      to { transform: translateY(30px) translateX(20px) scale(1.08); }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        width: min(100% - 20px, 1100px);
-        padding-top: 20px;
-      }
-
-      .hero {
-        padding: 28px 8px 18px;
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
       }
 
       .panel {
         padding: 16px;
-        border-radius: 20px;
+        border-radius: 22px;
       }
 
       .card {
-        min-height: auto;
+        min-height: unset;
       }
     }
   </style>
 </head>
 <body>
-  <div class="glow one"></div>
-  <div class="glow two"></div>
-
-  <main class="wrap">
+  <main class="container">
     <section class="hero">
-      <div class="badge">Official Links</div>
+      <div class="eyebrow">Official Links</div>
       <h1>Cylinder</h1>
-      <p class="subtitle">
-        developer. Find my stuff below.
-      </p>
+      <p class="subtitle">developer. Find my stuff below.</p>
     </section>
 
     <section class="panel">
-      <h2 class="section-title">Socials & Projects</h2>
-      <div class="links">
+      <h2 class="section-title">Socials &amp; Projects</h2>
+
+      <div class="grid">
         <a class="card" href="https://www.youtube.com/@Enum.PartType.Cylinder" target="_blank" rel="noopener noreferrer">
-          <div class="icon yt">YT</div>
-          <h3>YouTube</h3>
-          <p>content about the stuff i make sometimes.</p>
+          <div class="icon">YT</div>
+          <div class="content">
+            <h3>YouTube</h3>
+            <p>content about the stuff i make sometimes.</p>
+          </div>
         </a>
 
         <a class="card" href="https://modrinth.com/user/Cylinder" target="_blank" rel="noopener noreferrer">
-          <div class="icon mr">MR</div>
-          <h3>Modrinth</h3>
-          <p>the mods i sometimes make.</p>
+          <div class="icon">MR</div>
+          <div class="content">
+            <h3>Modrinth</h3>
+            <p>the mods i sometimes make.</p>
+          </div>
         </a>
 
         <a class="card" href="https://www.curseforge.com/members/cyl1nder/projects" target="_blank" rel="noopener noreferrer">
-          <div class="icon cf">CF</div>
-          <h3>CurseForge</h3>
-          <p>same thing but curseforge</p>
+          <div class="icon">CF</div>
+          <div class="content">
+            <h3>CurseForge</h3>
+            <p>same thing but curseforge</p>
+          </div>
         </a>
 
         <a class="card" href="https://www.roblox.com/users/1390153327/profile" target="_blank" rel="noopener noreferrer">
-          <div class="icon rb">RB</div>
-          <h3>Roblox Profile</h3>
-          <p>my roblox account.</p>
+          <div class="icon">RB</div>
+          <div class="content">
+            <h3>Roblox Profile</h3>
+            <p>my roblox account.</p>
+          </div>
         </a>
 
         <a class="card" href="https://www.roblox.com/communities/34849178/0gagaer6s-games#!/about" target="_blank" rel="noopener noreferrer">
-          <div class="icon rb">GR</div>
-          <h3>Roblox Group</h3>
-          <p>my roblox group.</p>
+          <div class="icon">GR</div>
+          <div class="content">
+            <h3>Roblox Group</h3>
+            <p>my roblox group.</p>
+          </div>
         </a>
 
         <a class="card" href="https://www.roblox.com/games/92392333973422/One-More-Secret" target="_blank" rel="noopener noreferrer">
-          <div class="icon gm">GM</div>
-          <h3>One More Secret</h3>
-          <p>play my roblox game.</p>
+          <div class="icon">GM</div>
+          <div class="content">
+            <h3>One More Secret</h3>
+            <p>play my roblox game.</p>
+          </div>
         </a>
 
         <a class="card" href="https://namemc.com/profile/1mii.2" target="_blank" rel="noopener noreferrer">
-          <div class="icon mc">MC</div>
-          <h3>NameMC</h3>
-          <p>my minecraft account.</p>
+          <div class="icon">MC</div>
+          <div class="content">
+            <h3>NameMC</h3>
+            <p>my minecraft account.</p>
+          </div>
         </a>
 
         <a class="card" href="https://guns.lol/111110" target="_blank" rel="noopener noreferrer">
-          <div class="icon gl">GL</div>
-          <h3>guns.lol</h3>
-          <p>more links.</p>
+          <div class="icon">GL</div>
+          <div class="content">
+            <h3>guns.lol</h3>
+            <p>more links.</p>
+          </div>
         </a>
       </div>
     </section>
 
-    <div class="footer">
-      hi
-    </div>
+    <div class="footer">hi</div>
   </main>
 </body>
 </html>
