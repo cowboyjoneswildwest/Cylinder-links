@@ -8,16 +8,16 @@
   <style>
     :root {
       --bg: #0f1115;
-      --bg-soft: #151922;
-      --panel: rgba(255, 255, 255, 0.035);
-      --panel-hover: rgba(255, 255, 255, 0.055);
+      --bg-soft: #141821;
+      --panel: rgba(255, 255, 255, 0.03);
+      --panel-hover: rgba(255, 255, 255, 0.045);
       --border: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.14);
+      --border-strong: rgba(255, 255, 255, 0.13);
       --text: #f3f4f6;
       --muted: #a1a1aa;
       --muted-2: #7b8190;
-      --accent: #c7d2fe;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+      --icon-bg: rgba(255, 255, 255, 0.03);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
       --radius: 22px;
     }
 
@@ -30,7 +30,7 @@
       padding: 0;
       min-height: 100%;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 30%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.025), transparent 30%),
         radial-gradient(circle at bottom right, rgba(255,255,255,0.02), transparent 25%),
         var(--bg);
       color: var(--text);
@@ -127,12 +127,17 @@
       flex: 0 0 42px;
       display: grid;
       place-items: center;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #f4f4f5;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      background: var(--icon-bg);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .icon img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      display: block;
+      opacity: 0.95;
     }
 
     .content h3 {
@@ -175,8 +180,9 @@
 <body>
   <main class="container">
     <section class="hero">
-      <div class="eyebrow">Official Links</div>
+      <div class="eyebrow">links</div>
       <h1>Cylinder</h1>
+      <h2>(0gagaer6)</h2>
       <p class="subtitle">developer. Find my stuff below.</p>
     </section>
 
@@ -185,7 +191,9 @@
 
       <div class="grid">
         <a class="card" href="https://www.youtube.com/@Enum.PartType.Cylinder" target="_blank" rel="noopener noreferrer">
-          <div class="icon">YT</div>
+          <div class="icon">
+            <img src="youtube_gray.svg" alt="YouTube logo" />
+          </div>
           <div class="content">
             <h3>YouTube</h3>
             <p>content about the stuff i make sometimes.</p>
@@ -193,7 +201,9 @@
         </a>
 
         <a class="card" href="https://modrinth.com/user/Cylinder" target="_blank" rel="noopener noreferrer">
-          <div class="icon">MR</div>
+          <div class="icon">
+            <img src="modrinth_gray.svg" alt="Modrinth logo" />
+          </div>
           <div class="content">
             <h3>Modrinth</h3>
             <p>the mods i sometimes make.</p>
@@ -201,7 +211,9 @@
         </a>
 
         <a class="card" href="https://www.curseforge.com/members/cyl1nder/projects" target="_blank" rel="noopener noreferrer">
-          <div class="icon">CF</div>
+          <div class="icon">
+            <img src="curseforge_gray.svg" alt="CurseForge logo" />
+          </div>
           <div class="content">
             <h3>CurseForge</h3>
             <p>same thing but curseforge</p>
@@ -209,7 +221,9 @@
         </a>
 
         <a class="card" href="https://www.roblox.com/users/1390153327/profile" target="_blank" rel="noopener noreferrer">
-          <div class="icon">RB</div>
+          <div class="icon">
+            <img src="roblox_gray.svg" alt="Roblox logo" />
+          </div>
           <div class="content">
             <h3>Roblox Profile</h3>
             <p>my roblox account.</p>
@@ -217,7 +231,9 @@
         </a>
 
         <a class="card" href="https://www.roblox.com/communities/34849178/0gagaer6s-games#!/about" target="_blank" rel="noopener noreferrer">
-          <div class="icon">GR</div>
+          <div class="icon">
+            <img src="robloxstudio_gray.svg" alt="Roblox group logo" />
+          </div>
           <div class="content">
             <h3>Roblox Group</h3>
             <p>my roblox group.</p>
@@ -225,7 +241,9 @@
         </a>
 
         <a class="card" href="https://www.roblox.com/games/92392333973422/One-More-Secret" target="_blank" rel="noopener noreferrer">
-          <div class="icon">GM</div>
+          <div class="icon">
+            <img src="robloxstudio_gray.svg" alt="Game logo" />
+          </div>
           <div class="content">
             <h3>One More Secret</h3>
             <p>play my roblox game.</p>
@@ -233,7 +251,9 @@
         </a>
 
         <a class="card" href="https://namemc.com/profile/1mii.2" target="_blank" rel="noopener noreferrer">
-          <div class="icon">MC</div>
+          <div class="icon">
+            <img src="namemc_gray.svg" alt="NameMC logo" />
+          </div>
           <div class="content">
             <h3>NameMC</h3>
             <p>my minecraft account.</p>
@@ -241,7 +261,9 @@
         </a>
 
         <a class="card" href="https://guns.lol/111110" target="_blank" rel="noopener noreferrer">
-          <div class="icon">GL</div>
+          <div class="icon">
+            <img src="gunslol_gray.svg" alt="guns.lol logo" />
+          </div>
           <div class="content">
             <h3>guns.lol</h3>
             <p>more links.</p>
